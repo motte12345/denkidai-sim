@@ -34,7 +34,7 @@ export function CalcPage() {
   }, []);
 
   const handleCalc = useCallback(() => {
-    if (watt <= 0 || hoursPerDay <= 0 || rate <= 0) return;
+    if (!Number.isFinite(watt) || watt <= 0 || !Number.isFinite(hoursPerDay) || hoursPerDay <= 0 || !Number.isFinite(rate) || rate <= 0) return;
 
     const frequency: UsageFrequency =
       frequencyType === 'daily'
@@ -120,7 +120,8 @@ export function CalcPage() {
             <label htmlFor="frequency">使用頻度</label>
             <select
               id="frequency"
-              value={frequencyType}
+              value={isAlwaysOn ? 'daily' : frequencyType}
+              disabled={isAlwaysOn}
               onChange={(e) =>
                 setFrequencyType(e.target.value as 'daily' | 'weekly' | 'monthly')
               }

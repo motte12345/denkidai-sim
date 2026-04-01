@@ -29,25 +29,29 @@ function calcAircon(
   tempDiffFactor: number,
   rate: number
 ): AirconResult {
-  // つけっぱなし: 外出中は安定稼働（定格の40〜60%程度）
   const steadyRatio = 0.5 * tempDiffFactor;
-  const costKeepOn = (ratedWatt * steadyRatio / 1000) * absenceHours * rate;
+  const steadyWatt = ratedWatt * steadyRatio;
 
-  // 切って再起動: 起動後30分間は高負荷、その後安定
-  const startupDuration = 0.5; // 30分
-  const startupCost = (startupWatt / 1000) * startupDuration * rate * tempDiffFactor;
-  const remainingHours = Math.max(0, 1 - startupDuration);
-  const steadyCostAfter = (ratedWatt * steadyRatio / 1000) * remainingHours * rate;
-  const costTurnOff = startupCost + steadyCostAfter;
+  // つけっぱなし: 外出中ずっと安定稼働
+  const costKeepOn = (steadyWatt / 1000) * absenceHours * rate;
+
+  // 切って再起動:
+  //   外出中 = 電気代ゼロ
+  //   帰宅後 = 起動30分は高負荷 + その後30分で安定（合計1時間で設定温度に復帰）
+  //   温度差が大きいほど復帰に時間がかかる
+  const startupDuration = 0.5; // 起動高負荷30分
+  const recoveryDuration = 0.5 * tempDiffFactor; // 復帰安定稼働
+  const startupCost = (startupWatt / 1000) * startupDuration * rate;
+  const recoveryCost = (steadyWatt / 1000) * recoveryDuration * rate;
+  const costTurnOff = startupCost + recoveryCost;
 
   const cheaper = costKeepOn <= costTurnOff ? 'keepOn' : 'turnOff';
   const diff = Math.abs(costKeepOn - costTurnOff);
 
-  // 損益分岐点（分）
-  const steadyCostPerMinute = (ratedWatt * steadyRatio / 1000) * rate / 60;
-  const startupOverhead = startupCost - (steadyCostPerMinute * startupDuration * 60);
-  const breakEvenMinutes = startupOverhead > 0
-    ? startupOverhead / steadyCostPerMinute
+  // 損益分岐点: つけっぱなしコスト = 切って再起動コスト となる外出時間（分）
+  const steadyCostPerMinute = (steadyWatt / 1000) * rate / 60;
+  const breakEvenMinutes = steadyCostPerMinute > 0
+    ? costTurnOff / (steadyCostPerMinute * 60) * 60
     : 0;
 
   return { costKeepOn, costTurnOff, cheaper, diff, breakEvenMinutes };
@@ -63,7 +67,7 @@ export function AirconPage() {
   const resultRef = useRef<HTMLDivElement>(null);
 
   const handleCalc = useCallback(() => {
-    if (ratedWatt <= 0 || startupWatt <= 0 || absenceHours <= 0 || rate <= 0) return;
+    if ([ratedWatt, startupWatt, absenceHours, rate].some((v) => !Number.isFinite(v) || v <= 0)) return;
     setResult(
       calcAircon(
         ratedWatt,

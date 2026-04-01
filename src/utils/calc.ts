@@ -77,7 +77,7 @@ export function calcTieredCost(monthlyKwh: number, tiers: TieredRate[]): number 
     if (remaining <= 0) break;
   }
 
-  if (remaining > 0) {
+  if (import.meta.env.DEV && remaining > 0) {
     console.warn('calcTieredCost: tiers do not cover all usage; missing unbounded final tier');
   }
 

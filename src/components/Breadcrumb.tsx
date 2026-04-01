@@ -25,16 +25,18 @@ export function Breadcrumb({ items }: Props) {
     <>
       <JsonLd data={jsonLd} />
       <nav aria-label="パンくずリスト" style={{ marginBottom: 16, fontSize: '0.85rem' }}>
-        {allItems.map((item, i) => (
-          <span key={i}>
-            {i > 0 && <span style={{ margin: '0 6px', color: 'var(--color-text-secondary)' }}>/</span>}
-            {item.path ? (
-              <Link to={item.path} style={{ color: 'var(--color-text-secondary)' }}>{item.name}</Link>
-            ) : (
-              <span style={{ color: 'var(--color-text)' }}>{item.name}</span>
-            )}
-          </span>
-        ))}
+        <ol style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: 0, padding: 0 }}>
+          {allItems.map((item, i) => (
+            <li key={item.name} style={{ display: 'flex', alignItems: 'center' }}>
+              {i > 0 && <span style={{ margin: '0 6px', color: 'var(--color-text-secondary)' }}>/</span>}
+              {item.path ? (
+                <Link to={item.path} style={{ color: 'var(--color-text-secondary)' }}>{item.name}</Link>
+              ) : (
+                <span aria-current="page" style={{ color: 'var(--color-text)' }}>{item.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
       </nav>
     </>
   );

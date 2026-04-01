@@ -24,8 +24,8 @@ function calcReplace(
   purchasePrice: number,
   rate: number
 ): ReplaceResult {
-  const currentYearly = (currentWatt / 1000) * hoursPerDay * 365 * rate;
-  const newYearly = (newWatt / 1000) * hoursPerDay * 365 * rate;
+  const currentYearly = (currentWatt / 1000) * hoursPerDay * 30 * 12 * rate;
+  const newYearly = (newWatt / 1000) * hoursPerDay * 30 * 12 * rate;
   const savingYearly = currentYearly - newYearly;
 
   const breakEvenYears =
@@ -57,7 +57,7 @@ export function ReplacePage() {
   const resultRef = useRef<HTMLDivElement>(null);
 
   const handleCalc = useCallback(() => {
-    if (currentWatt <= 0 || newWatt <= 0 || hoursPerDay <= 0 || rate <= 0) return;
+    if ([currentWatt, newWatt, hoursPerDay, rate].some((v) => !Number.isFinite(v) || v <= 0)) return;
     setResult(calcReplace(currentWatt, newWatt, hoursPerDay, purchasePrice, rate));
     setTimeout(() => {
       resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -230,9 +230,9 @@ export function ReplacePage() {
             </tbody>
           </table>
 
-          {result.breakEvenYears !== null && (
+          {result.breakEvenYears !== null && result.breakEvenYears > 0 && (
             <p style={{ marginTop: 16, fontWeight: 500 }}>
-              {Math.ceil(result.breakEvenYears)}年以上使うなら買い替えた方がお得です。
+              約{result.breakEvenYears.toFixed(1)}年以上使うなら買い替えた方がお得です。
             </p>
           )}
         </div>

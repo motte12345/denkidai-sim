@@ -1,4 +1,6 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { trackPageView } from '../utils/analytics';
 
 const navItems = [
   { to: '/calc', label: '家電別計算' },
@@ -9,6 +11,12 @@ const navItems = [
 ];
 
 export function Layout() {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname, document.title);
+  }, [location.pathname]);
+
   return (
     <>
       <header className="site-header">
