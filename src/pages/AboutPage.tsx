@@ -41,6 +41,16 @@ export function AboutPage() {
       </div>
 
       <div className="card">
+        <h3 className="card__title">お問い合わせ</h3>
+        <p style={{ lineHeight: 1.8 }}>
+          ご質問・ご要望・料金データの誤りなどがありましたら、下記までご連絡ください。
+        </p>
+        <p style={{ marginTop: 8 }}>
+          <a href="mailto:tm.qp.sites@gmail.com">tm.qp.sites@gmail.com</a>
+        </p>
+      </div>
+
+      <div className="card">
         <h3 className="card__title">料金データについて</h3>
         <p style={{ lineHeight: 1.8 }}>
           電力料金データは主要10電力会社の従量電灯プラン（規制料金）に基づいています。
