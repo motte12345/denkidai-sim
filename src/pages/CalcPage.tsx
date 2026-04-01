@@ -7,17 +7,18 @@ import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
 import { RelatedTools } from '../components/RelatedTools';
+import { usePersistedState } from '../utils/usePersistedState';
 import { calcElectricityCost, type CalcResult, type UsageFrequency } from '../utils/calc';
 import type { Appliance } from '../types';
 import ratesData from '../data/electricityRates.json';
 
 export function CalcPage() {
-  const [watt, setWatt] = useState(500);
-  const [hoursPerDay, setHoursPerDay] = useState(8);
-  const [frequencyType, setFrequencyType] = useState<'daily' | 'weekly' | 'monthly'>('daily');
-  const [frequencyDays, setFrequencyDays] = useState(5);
-  const [rate, setRate] = useState(ratesData.defaultRate);
-  const [isAlwaysOn, setIsAlwaysOn] = useState(false);
+  const [watt, setWatt] = usePersistedState('calc:watt', 500);
+  const [hoursPerDay, setHoursPerDay] = usePersistedState('calc:hours', 8);
+  const [frequencyType, setFrequencyType] = usePersistedState<'daily' | 'weekly' | 'monthly'>('calc:freqType', 'daily');
+  const [frequencyDays, setFrequencyDays] = usePersistedState('calc:freqDays', 5);
+  const [rate, setRate] = usePersistedState('calc:rate', ratesData.defaultRate);
+  const [isAlwaysOn, setIsAlwaysOn] = usePersistedState('calc:alwaysOn', false);
   const [result, setResult] = useState<CalcResult | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 

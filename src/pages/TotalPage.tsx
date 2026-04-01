@@ -1,10 +1,11 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { ApplianceSelect } from '../components/ApplianceSelect';
 import { Head } from '../components/Head';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { AdUnit } from '../components/AdUnit';
 import { RelatedTools } from '../components/RelatedTools';
+import { usePersistedState } from '../utils/usePersistedState';
 import { calcElectricityCost, formatCurrency, type UsageFrequency } from '../utils/calc';
 import type { Appliance } from '../types';
 import ratesData from '../data/electricityRates.json';
@@ -25,8 +26,8 @@ const COLORS = [
 ];
 
 export function TotalPage() {
-  const [items, setItems] = useState<HouseholdItem[]>([]);
-  const [rate, setRate] = useState(ratesData.defaultRate);
+  const [items, setItems] = usePersistedState<HouseholdItem[]>('total:items', []);
+  const [rate, setRate] = usePersistedState('total:rate', ratesData.defaultRate);
 
   const handleAdd = useCallback((appliance: Appliance | null) => {
     if (!appliance) return;

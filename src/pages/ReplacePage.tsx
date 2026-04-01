@@ -5,6 +5,7 @@ import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
 import { RelatedTools } from '../components/RelatedTools';
+import { usePersistedState } from '../utils/usePersistedState';
 import { formatCurrency } from '../utils/calc';
 import ratesData from '../data/electricityRates.json';
 
@@ -48,11 +49,11 @@ function calcReplace(
 }
 
 export function ReplacePage() {
-  const [currentWatt, setCurrentWatt] = useState(800);
-  const [newWatt, setNewWatt] = useState(400);
-  const [hoursPerDay, setHoursPerDay] = useState(8);
-  const [purchasePrice, setPurchasePrice] = useState(50000);
-  const [rate, setRate] = useState(ratesData.defaultRate);
+  const [currentWatt, setCurrentWatt] = usePersistedState('replace:currentWatt', 800);
+  const [newWatt, setNewWatt] = usePersistedState('replace:newWatt', 400);
+  const [hoursPerDay, setHoursPerDay] = usePersistedState('replace:hours', 8);
+  const [purchasePrice, setPurchasePrice] = usePersistedState('replace:price', 50000);
+  const [rate, setRate] = usePersistedState('replace:rate', ratesData.defaultRate);
   const [result, setResult] = useState<ReplaceResult | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 

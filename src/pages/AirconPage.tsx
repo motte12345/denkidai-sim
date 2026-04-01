@@ -5,6 +5,7 @@ import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
 import { RelatedTools } from '../components/RelatedTools';
+import { usePersistedState } from '../utils/usePersistedState';
 import { formatCurrency } from '../utils/calc';
 import ratesData from '../data/electricityRates.json';
 
@@ -58,11 +59,11 @@ function calcAircon(
 }
 
 export function AirconPage() {
-  const [ratedWatt, setRatedWatt] = useState(500);
-  const [startupWatt, setStartupWatt] = useState(1400);
-  const [absenceHours, setAbsenceHours] = useState(2);
-  const [tempDiffIndex, setTempDiffIndex] = useState(1);
-  const [rate, setRate] = useState(ratesData.defaultRate);
+  const [ratedWatt, setRatedWatt] = usePersistedState('aircon:ratedWatt', 500);
+  const [startupWatt, setStartupWatt] = usePersistedState('aircon:startupWatt', 1400);
+  const [absenceHours, setAbsenceHours] = usePersistedState('aircon:absence', 2);
+  const [tempDiffIndex, setTempDiffIndex] = usePersistedState('aircon:tempDiff', 1);
+  const [rate, setRate] = usePersistedState('aircon:rate', ratesData.defaultRate);
   const [result, setResult] = useState<AirconResult | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 

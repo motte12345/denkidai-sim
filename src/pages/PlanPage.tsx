@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Head } from '../components/Head';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { AdUnit } from '../components/AdUnit';
 import { RelatedTools } from '../components/RelatedTools';
+import { usePersistedState } from '../utils/usePersistedState';
 import { calcTieredCost, formatCurrency } from '../utils/calc';
 import ratesData from '../data/electricityRates.json';
 import type { RatesData } from '../types';
@@ -18,8 +19,8 @@ interface CompanyResult {
 }
 
 export function PlanPage() {
-  const [monthlyKwh, setMonthlyKwh] = useState(300);
-  const [ampere, setAmpere] = useState('40A');
+  const [monthlyKwh, setMonthlyKwh] = usePersistedState('plan:kwh', 300);
+  const [ampere, setAmpere] = usePersistedState('plan:ampere', '40A');
 
   const results = useMemo((): CompanyResult[] => {
     return data.companies.map((company) => {
