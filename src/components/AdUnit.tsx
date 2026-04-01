@@ -28,7 +28,7 @@ export function AdUnit({ slot, format = 'auto', style }: Props) {
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
-        data-ad-client={import.meta.env.VITE_ADSENSE_CLIENT ?? ''}
+        data-ad-client="ca-pub-6514048542181621"
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive="true"
