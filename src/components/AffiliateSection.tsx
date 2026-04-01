@@ -9,15 +9,15 @@ interface Props {
   items: SuggestionItem[];
 }
 
-const AMAZON_TAG = import.meta.env.VITE_AMAZON_TAG ?? '';
-const RAKUTEN_AFF_ID = import.meta.env.VITE_RAKUTEN_AFF_ID ?? '';
+const AMAZON_TAG = 'qp2026-22';
+const RAKUTEN_AFF_ID = '526c1e79.46d4a30e.526c1e7a.3db24b05';
 
 function amazonSearchUrl(query: string): string {
   return `https://www.amazon.co.jp/s?k=${encodeURIComponent(query)}&tag=${AMAZON_TAG}`;
 }
 
 function rakutenSearchUrl(query: string): string {
-  return `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(query)}/?f=1&grp=product&afflg=${RAKUTEN_AFF_ID}`;
+  return `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFF_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F${encodeURIComponent(query)}%2F`;
 }
 
 export function AffiliateSection({ title = '省エネ家電をチェック', items }: Props) {
