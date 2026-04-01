@@ -105,7 +105,7 @@ export function PlanPage() {
             </thead>
             <tbody>
               {sorted.map((r, i) => (
-                <tr key={r.name}>
+                <tr key={r.name} className={i === 0 ? 'rank-1' : i <= 2 ? `rank-${i + 1}` : ''}>
                   <td>{i + 1}</td>
                   <td>{r.name}</td>
                   <td>{r.plan}</td>
@@ -119,11 +119,11 @@ export function PlanPage() {
             </tbody>
           </table>
         </div>
-        <p style={{ marginTop: 12, fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-          ※ 燃料費調整額・再エネ賦課金は含まれていません。実際の請求額とは異なります。
-          <br />
-          ※ 料金データ最終更新: {data.lastUpdated}
-        </p>
+        <div className="notice-box">
+          <div className="notice-box__label">ご注意</div>
+          燃料費調整額・再エネ賦課金は含まれていません。実際の請求額とは異なります。
+          料金データ最終更新: {data.lastUpdated}
+        </div>
       </div>
 
       <div className="card">

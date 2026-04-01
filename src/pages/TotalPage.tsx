@@ -128,7 +128,9 @@ export function TotalPage() {
         <>
           <div className="card">
             <h3 className="card__title">登録した家電</h3>
-            <div style={{ overflowX: 'auto' }}>
+
+            {/* デスクトップ: テーブル表示 */}
+            <div className="desktop-table" style={{ overflowX: 'auto' }}>
               <table className="data-table">
                 <thead>
                   <tr>
@@ -205,6 +207,60 @@ export function TotalPage() {
                   </tr>
                 </tfoot>
               </table>
+            </div>
+
+            {/* モバイル: カード表示 */}
+            <div className="mobile-card-list">
+              {results.map((item) => (
+                <div key={item.id} className="mobile-card-item">
+                  <div className="mobile-card-item__header">
+                    <input
+                      type="text"
+                      value={item.name}
+                      className="mobile-card-item__name"
+                      onChange={(e) => handleUpdate(item.id, 'name', e.target.value)}
+                      style={{ flex: 1, border: 'none', background: 'transparent', fontWeight: 600 }}
+                    />
+                    <button
+                      className="btn btn--danger btn--sm"
+                      aria-label={`${item.name}を削除`}
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      削除
+                    </button>
+                  </div>
+                  <div className="mobile-card-item__fields">
+                    <div className="mobile-card-item__field">
+                      <label>W数</label>
+                      <input
+                        type="number"
+                        value={item.watt}
+                        min={1}
+                        onChange={(e) => handleUpdate(item.id, 'watt', Number(e.target.value))}
+                      />
+                    </div>
+                    <div className="mobile-card-item__field">
+                      <label>時間/日</label>
+                      <input
+                        type="number"
+                        value={item.hoursPerDay}
+                        min={0.5}
+                        max={24}
+                        step={0.5}
+                        disabled={item.alwaysOn}
+                        onChange={(e) => handleUpdate(item.id, 'hoursPerDay', Number(e.target.value))}
+                      />
+                    </div>
+                  </div>
+                  <div className="mobile-card-item__costs">
+                    <div>月額: <span>{formatCurrency(item.costPerMonth)}円</span></div>
+                    <div>年額: <span>{formatCurrency(item.costPerYear)}円</span></div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ padding: '12px', fontWeight: 600, textAlign: 'right', borderTop: '2px solid var(--color-text)' }}>
+                合計: 月額 {formatCurrency(totalMonth)}円 / 年額 {formatCurrency(totalYear)}円
+              </div>
             </div>
           </div>
 

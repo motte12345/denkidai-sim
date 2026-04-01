@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { ApplianceSelect } from '../components/ApplianceSelect';
 import { ResultDisplay } from '../components/ResultDisplay';
 import { Head } from '../components/Head';
@@ -16,6 +16,7 @@ export function CalcPage() {
   const [rate, setRate] = useState(ratesData.defaultRate);
   const [isAlwaysOn, setIsAlwaysOn] = useState(false);
   const [result, setResult] = useState<CalcResult | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const handleApplianceSelect = useCallback((appliance: Appliance | null) => {
     if (!appliance) return;
@@ -47,6 +48,9 @@ export function CalcPage() {
         ratePerKwh: rate,
       })
     );
+    setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   }, [watt, hoursPerDay, frequencyType, frequencyDays, rate, isAlwaysOn]);
 
   return (
@@ -150,7 +154,7 @@ export function CalcPage() {
       </div>
 
       {result && (
-        <>
+        <div ref={resultRef}>
           <ResultDisplay result={result} />
           <AffiliateSection
             items={[
@@ -159,7 +163,7 @@ export function CalcPage() {
               { label: 'LED照明', description: '蛍光灯からLEDに替えるだけで消費電力が約半分に', searchQuery: 'LED シーリングライト' },
             ]}
           />
-        </>
+        </div>
       )}
 
       <AdUnit slot="calc-bottom" />

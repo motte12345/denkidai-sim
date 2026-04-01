@@ -9,10 +9,13 @@
   --color-border: #e2e8f0;
   --color-accent: #f59e0b;
   --color-success: #10b981;
+  --color-success-light: #d1fae5;
   --color-danger: #ef4444;
-  --radius: 8px;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-pill: 999px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
   --max-width: 960px;
 }
 
@@ -27,6 +30,7 @@
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -73,7 +77,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .site-header__title {
@@ -93,16 +97,17 @@ img {
 
 .site-nav {
   display: flex;
-  gap: 4px;
+  gap: 2px;
   flex-wrap: wrap;
 }
 
 .site-nav a {
   font-size: 0.85rem;
   padding: 6px 10px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   color: var(--color-text-secondary);
   transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
 }
 
 .site-nav a:hover,
@@ -130,9 +135,11 @@ img {
 
 /* Page title */
 .page-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 8px;
+  padding-left: 12px;
+  border-left: 4px solid var(--color-primary);
 }
 
 .page-description {
@@ -179,6 +186,17 @@ img {
   margin-top: 2px;
 }
 
+.form-group--error input,
+.form-group--error select {
+  border-color: var(--color-danger);
+}
+
+.form-group__error {
+  font-size: 0.8rem;
+  color: var(--color-danger);
+  margin-top: 2px;
+}
+
 .form-row {
   display: flex;
   gap: 12px;
@@ -196,7 +214,7 @@ select {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
   color: var(--color-text);
   background: var(--color-surface);
@@ -217,17 +235,17 @@ select:focus {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 20px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: background 0.15s, transform 0.1s;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 .btn--primary {
@@ -256,6 +274,7 @@ select:focus {
 .btn--sm {
   padding: 6px 12px;
   font-size: 0.85rem;
+  border-radius: var(--radius-sm);
 }
 
 /* Result */
@@ -279,7 +298,7 @@ select:focus {
 }
 
 .result-item__value {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--color-primary-dark);
 }
@@ -301,6 +320,7 @@ select:focus {
 }
 
 .result-item--highlight .result-item__value {
+  font-size: 2rem;
   color: #fff;
 }
 
@@ -312,7 +332,9 @@ select:focus {
 }
 
 .tool-card {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -327,11 +349,27 @@ select:focus {
   text-decoration: none;
 }
 
+.tool-card__icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-sm);
+}
+
+.tool-card__body {
+  flex: 1;
+}
+
 .tool-card__title {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .tool-card__desc {
@@ -369,18 +407,58 @@ select:focus {
   background: var(--color-primary-light);
 }
 
+/* Rank highlight for plan page */
+.data-table tr.rank-1 td {
+  background: var(--color-success-light);
+  font-weight: 600;
+}
+
+.data-table tr.rank-2 td,
+.data-table tr.rank-3 td {
+  background: #f0fdf4;
+}
+
+/* Mobile card list (for /total on mobile) */
+.mobile-card-list {
+  display: none;
+}
+
+/* Notice box */
+.notice-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.notice-box__label {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .site-header .container {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
 
   .site-nav {
     width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .site-nav a {
+    padding: 8px 10px;
+    font-size: 0.82rem;
   }
 
   .result-grid {
@@ -396,6 +474,104 @@ select:focus {
   }
 
   .page-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+  }
+
+  .btn--primary {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .tool-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tool-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .tool-card__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  /* /total: テーブルを隠してカード表示に切り替え */
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-card-item {
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+  }
+
+  .mobile-card-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .mobile-card-item__name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .mobile-card-item__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .mobile-card-item__field label {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .mobile-card-item__costs {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .mobile-card-item__costs span {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+}
+
+@media (hover: hover) {
+  input[type='number']:focus,
+  input[type='text']:focus,
+  select:focus {
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+  }
+}
+
+@media (hover: none) {
+  input[type='number']:focus,
+  input[type='text']:focus,
+  select:focus {
+    box-shadow: none;
   }
 }

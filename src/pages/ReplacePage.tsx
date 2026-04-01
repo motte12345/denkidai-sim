@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Head } from '../components/Head';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
@@ -51,10 +51,14 @@ export function ReplacePage() {
   const [purchasePrice, setPurchasePrice] = useState(50000);
   const [rate, setRate] = useState(ratesData.defaultRate);
   const [result, setResult] = useState<ReplaceResult | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const handleCalc = useCallback(() => {
     if (currentWatt <= 0 || newWatt <= 0 || hoursPerDay <= 0 || rate <= 0) return;
     setResult(calcReplace(currentWatt, newWatt, hoursPerDay, purchasePrice, rate));
+    setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   }, [currentWatt, newWatt, hoursPerDay, purchasePrice, rate]);
 
   return (
@@ -136,7 +140,7 @@ export function ReplacePage() {
       </div>
 
       {result && (
-        <div className="card">
+        <div className="card" ref={resultRef}>
           <h3 className="card__title">計算結果</h3>
 
           <div className="result-grid">

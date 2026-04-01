@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Head } from '../components/Head';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
@@ -57,6 +57,7 @@ export function AirconPage() {
   const [tempDiffIndex, setTempDiffIndex] = useState(1);
   const [rate, setRate] = useState(ratesData.defaultRate);
   const [result, setResult] = useState<AirconResult | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const handleCalc = useCallback(() => {
     if (ratedWatt <= 0 || startupWatt <= 0 || absenceHours <= 0 || rate <= 0) return;
@@ -69,6 +70,9 @@ export function AirconPage() {
         rate
       )
     );
+    setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   }, [ratedWatt, startupWatt, absenceHours, tempDiffIndex, rate]);
 
   return (
@@ -157,7 +161,7 @@ export function AirconPage() {
       </div>
 
       {result && (
-        <div className="card">
+        <div className="card" ref={resultRef}>
           <h3 className="card__title">比較結果</h3>
 
           <div className="result-grid">
@@ -192,10 +196,11 @@ export function AirconPage() {
             </p>
           </div>
 
-          <p style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-            ※ この計算は簡易モデルです。実際のインバーター制御では、部屋の断熱性能、
+          <div className="notice-box">
+            <div className="notice-box__label">ご注意</div>
+            この計算は簡易モデルです。実際のインバーター制御では、部屋の断熱性能、
             外気温、設定温度などにより消費電力は大きく変動します。あくまで目安としてお使いください。
-          </p>
+          </div>
         </div>
       )}
 

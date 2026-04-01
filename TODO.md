@@ -1,6 +1,6 @@
 # TODO.md — 電気代カリキュレーター
 
-## 全フェーズ完了。残りは本番ID設定とデプロイのみ。
+## 本番公開済み: https://denkidai-sim.pages.dev/
 
 ### Phase 1 — 完了
 - [x] Vite + React + TypeScript プロジェクト初期化
@@ -28,12 +28,13 @@
 - [x] GA4/AdSense/アフィリエイトIDを環境変数化（.env.example）
 - [x] 入力バリデーション追加
 - [x] コードレビュー指摘事項の修正（HIGH 5件 + MEDIUM 2件）
+- [x] GitHub リポジトリ作成 + push (motte12345/denkidai-sim)
+- [x] Cloudflare Pages デプロイ (denkidai-sim.pages.dev)
 
-### 本番デプロイ前 TODO
+### 残作業（手動対応）
+- [ ] Cloudflareダッシュボードで GitHub連携を設定（自動デプロイ化）
 - [ ] `.env` に本番の GA4 ID を設定
 - [ ] `.env` に本番の AdSense クライアントID を設定
 - [ ] `.env` に Amazon/楽天アフィリエイトID を設定
-- [ ] GitHub リポジトリ作成 + push
-- [ ] Cloudflare Pages プロジェクト作成（GitHub連携）
 - [ ] Cloudflare Pages の環境変数に VITE_* を設定
 - [ ] Search Console にサイト登録 + sitemap送信

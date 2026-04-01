@@ -5,26 +5,31 @@ import { AdUnit } from '../components/AdUnit';
 const tools = [
   {
     to: '/calc',
+    icon: '\u{1F50C}',
     title: '家電別 電気代計算',
     desc: '家電の消費電力と使用時間から、1時間・1日・1ヶ月・1年の電気代を計算します。50種類以上のプリセットから選べます。',
   },
   {
     to: '/total',
+    icon: '\u{1F3E0}',
     title: '家計の電気代まるごと計算',
     desc: '家中の家電を登録して、電気代の合計と構成比を一覧表示。何が一番電気代を食っているか一目でわかります。',
   },
   {
     to: '/replace',
+    icon: '\u{1F4B0}',
     title: '買い替え節約シミュレーター',
     desc: '今の家電と省エネ家電の電気代を比較。購入価格の元が取れるまでの期間を計算します。',
   },
   {
     to: '/aircon',
+    icon: '\u{2744}\u{FE0F}',
     title: 'エアコン つけっぱなし vs こまめに切る',
     desc: '外出時にエアコンをつけっぱなしにするのと切るのと、どちらが安いか比較します。',
   },
   {
     to: '/plan',
+    icon: '\u{1F4CA}',
     title: '電力会社・プラン別 単価比較',
     desc: '主要10電力会社の従量電灯プランで、月間使用量に応じた電気代を一覧比較します。',
   },
@@ -46,8 +51,11 @@ export function TopPage() {
       <div className="tool-grid">
         {tools.map((tool) => (
           <Link key={tool.to} to={tool.to} className="tool-card">
-            <div className="tool-card__title">{tool.title}</div>
-            <div className="tool-card__desc">{tool.desc}</div>
+            <div className="tool-card__icon">{tool.icon}</div>
+            <div className="tool-card__body">
+              <div className="tool-card__title">{tool.title}</div>
+              <div className="tool-card__desc">{tool.desc}</div>
+            </div>
           </Link>
         ))}
       </div>
