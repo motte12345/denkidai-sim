@@ -1,7 +1,10 @@
 import { useState, useCallback, useRef } from 'react';
 import { Head } from '../components/Head';
+import { Breadcrumb } from '../components/Breadcrumb';
+import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
+import { RelatedTools } from '../components/RelatedTools';
 import { formatCurrency } from '../utils/calc';
 import ratesData from '../data/electricityRates.json';
 
@@ -68,6 +71,18 @@ export function ReplacePage() {
         description="今の家電と省エネ家電の電気代を比較。購入価格の元が取れるまでの期間と5年・10年のトータルコストを計算します。"
         path="/replace"
       />
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: '家電の買い替えで元が取れるか計算する方法',
+        description: '現在の家電と省エネ家電の消費電力を比較し、購入価格の回収期間を計算します。',
+        step: [
+          { '@type': 'HowToStep', text: '現在の家電と買い替え候補の消費電力（W数）を入力する' },
+          { '@type': 'HowToStep', text: '1日の使用時間と買い替え候補の購入価格を入力する' },
+          { '@type': 'HowToStep', text: '「計算する」を押して元が取れるまでの期間を確認する' },
+        ],
+      }} />
+      <Breadcrumb items={[{ name: '買い替えシミュレーター' }]} />
       <h2 className="page-title">買い替え節約シミュレーター</h2>
       <p className="page-description">
         今の家電と省エネ家電の電気代を比較し、買い替えの損益分岐点を計算します。
@@ -234,6 +249,7 @@ export function ReplacePage() {
         />
       )}
 
+      <RelatedTools current="/replace" />
       <AdUnit slot="replace-bottom" />
     </>
   );

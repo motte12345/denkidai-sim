@@ -2,8 +2,11 @@ import { useState, useCallback, useRef } from 'react';
 import { ApplianceSelect } from '../components/ApplianceSelect';
 import { ResultDisplay } from '../components/ResultDisplay';
 import { Head } from '../components/Head';
+import { Breadcrumb } from '../components/Breadcrumb';
+import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
+import { RelatedTools } from '../components/RelatedTools';
 import { calcElectricityCost, type CalcResult, type UsageFrequency } from '../utils/calc';
 import type { Appliance } from '../types';
 import ratesData from '../data/electricityRates.json';
@@ -60,6 +63,18 @@ export function CalcPage() {
         description="家電の消費電力と使用時間から電気代を計算。50種類以上のプリセットから選ぶだけで1時間・1日・1ヶ月・1年の電気代がわかります。"
         path="/calc"
       />
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: '家電の電気代を計算する方法',
+        description: '消費電力と使用時間から、家電1台あたりの電気代を計算します。',
+        step: [
+          { '@type': 'HowToStep', text: '家電をプリセットから選ぶか、消費電力（W数）を入力する' },
+          { '@type': 'HowToStep', text: '1日の使用時間と使用頻度を設定する' },
+          { '@type': 'HowToStep', text: '「計算する」ボタンを押して電気代を確認する' },
+        ],
+      }} />
+      <Breadcrumb items={[{ name: '家電別 電気代計算' }]} />
       <h2 className="page-title">家電別 電気代計算</h2>
       <p className="page-description">
         家電の消費電力と使用時間から、電気代を計算します。プリセットから選ぶか、W数を直接入力してください。
@@ -166,6 +181,7 @@ export function CalcPage() {
         </div>
       )}
 
+      <RelatedTools current="/calc" />
       <AdUnit slot="calc-bottom" />
     </>
   );

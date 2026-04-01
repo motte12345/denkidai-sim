@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import { Head } from '../components/Head';
+import { Breadcrumb } from '../components/Breadcrumb';
 import { AdUnit } from '../components/AdUnit';
+import { RelatedTools } from '../components/RelatedTools';
 import { calcTieredCost, formatCurrency } from '../utils/calc';
 import ratesData from '../data/electricityRates.json';
 import type { RatesData } from '../types';
@@ -50,6 +52,7 @@ export function PlanPage() {
         description="主要10電力会社の従量電灯プランを比較。月間使用量を入力するだけで、各社の月額電気代を安い順にランキング表示します。"
         path="/plan"
       />
+      <Breadcrumb items={[{ name: 'プラン比較' }]} />
       <h2 className="page-title">電力会社・プラン別 単価比較</h2>
       <p className="page-description">
         主要10電力会社の従量電灯プランで、月間使用量に応じた電気代を比較します。
@@ -160,6 +163,7 @@ export function PlanPage() {
         </table>
       </div>
 
+      <RelatedTools current="/plan" />
       <AdUnit slot="plan-bottom" />
     </>
   );

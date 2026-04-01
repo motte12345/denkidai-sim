@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://denkidai-calc.pages.dev/sitemap.xml
+Sitemap: https://denkidai-sim.pages.dev/sitemap.xml

@@ -7,7 +7,7 @@ interface Props {
 }
 
 const SITE_NAME = '電気代カリキュレーター';
-const BASE_URL = 'https://denkidai-calc.pages.dev';
+const BASE_URL = 'https://denkidai-sim.pages.dev';
 
 export function Head({ title, description, path }: Props) {
   useEffect(() => {

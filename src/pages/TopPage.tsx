@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Head } from '../components/Head';
+import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 
 const tools = [
@@ -35,6 +36,25 @@ const tools = [
   },
 ];
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: '電気代カリキュレーター',
+  url: 'https://denkidai-sim.pages.dev/',
+  description: '家電の消費電力から電気代を簡単計算。節約や買い替えの判断を支援する無料ツール。',
+};
+
+const webAppJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: '電気代カリキュレーター',
+  url: 'https://denkidai-sim.pages.dev/',
+  applicationCategory: 'UtilityApplication',
+  operatingSystem: 'All',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
+  description: '家電ごとの電気代を計算し、節約や家電の買い替え判断を支援する無料Webツール。',
+};
+
 export function TopPage() {
   return (
     <>
@@ -43,9 +63,13 @@ export function TopPage() {
         description="家電の消費電力から電気代を簡単計算。50種類以上のプリセットから選ぶだけ。買い替え節約シミュレーション、電力会社比較も。"
         path="/"
       />
-      <h2 className="page-title">電気代カリキュレーター</h2>
+      <JsonLd data={websiteJsonLd} />
+      <JsonLd data={webAppJsonLd} />
+
+      <h2 className="page-title">5つの無料計算ツール</h2>
       <p className="page-description">
         家電ごとの電気代を計算して、節約のポイントを見つけましょう。
+        消費電力がわからなくても、プリセットから選ぶだけですぐに計算できます。
       </p>
 
       <div className="tool-grid">
@@ -53,7 +77,7 @@ export function TopPage() {
           <Link key={tool.to} to={tool.to} className="tool-card">
             <div className="tool-card__icon">{tool.icon}</div>
             <div className="tool-card__body">
-              <div className="tool-card__title">{tool.title}</div>
+              <h3 className="tool-card__title">{tool.title}</h3>
               <div className="tool-card__desc">{tool.desc}</div>
             </div>
           </Link>

@@ -2,7 +2,9 @@ import { useState, useCallback, useMemo } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { ApplianceSelect } from '../components/ApplianceSelect';
 import { Head } from '../components/Head';
+import { Breadcrumb } from '../components/Breadcrumb';
 import { AdUnit } from '../components/AdUnit';
+import { RelatedTools } from '../components/RelatedTools';
 import { calcElectricityCost, formatCurrency, type UsageFrequency } from '../utils/calc';
 import type { Appliance } from '../types';
 import ratesData from '../data/electricityRates.json';
@@ -100,6 +102,7 @@ export function TotalPage() {
         description="家中の家電を登録して電気代の合計と内訳を確認。円グラフで構成比を可視化し、電気代が高い家電がすぐわかります。"
         path="/total"
       />
+      <Breadcrumb items={[{ name: '家計まるごと計算' }]} />
       <h2 className="page-title">家計の電気代まるごと計算</h2>
       <p className="page-description">
         家中の家電を登録して、電気代の合計と内訳を確認しましょう。
@@ -299,6 +302,7 @@ export function TotalPage() {
         </div>
       )}
 
+      <RelatedTools current="/total" />
       <AdUnit slot="total-bottom" />
     </>
   );

@@ -1,7 +1,10 @@
 import { useState, useCallback, useRef } from 'react';
 import { Head } from '../components/Head';
+import { Breadcrumb } from '../components/Breadcrumb';
+import { JsonLd } from '../components/JsonLd';
 import { AdUnit } from '../components/AdUnit';
 import { AffiliateSection } from '../components/AffiliateSection';
+import { RelatedTools } from '../components/RelatedTools';
 import { formatCurrency } from '../utils/calc';
 import ratesData from '../data/electricityRates.json';
 
@@ -82,6 +85,19 @@ export function AirconPage() {
         description="外出時にエアコンをつけっぱなしにするのと切るのと、どちらが電気代が安いか比較。何分以内の外出ならつけっぱなしがお得かわかります。"
         path="/aircon"
       />
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [{
+          '@type': 'Question',
+          name: 'エアコンはつけっぱなしとこまめに切るのどちらが電気代が安い？',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: '一般的に30分〜1時間程度の外出ならつけっぱなしの方が電気代が安くなります。エアコンは起動時に最も電力を消費するため、短時間の外出では切って再起動するよりつけっぱなしの方が効率的です。ただし、外出時間が長い場合は切った方が安くなります。',
+          },
+        }],
+      }} />
+      <Breadcrumb items={[{ name: 'エアコン比較' }]} />
       <h2 className="page-title">エアコン つけっぱなし vs こまめに切る</h2>
       <p className="page-description">
         外出時にエアコンをつけっぱなしにするのと切るのと、どちらが電気代が安いか比較します。
@@ -215,6 +231,7 @@ export function AirconPage() {
         />
       )}
 
+      <RelatedTools current="/aircon" />
       <AdUnit slot="aircon-bottom" />
     </>
   );
