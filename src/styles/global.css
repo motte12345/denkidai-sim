@@ -128,6 +128,20 @@ img {
   color: var(--color-text-secondary);
 }
 
+.site-footer__related {
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+}
+
+.site-footer__related a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.site-footer__related a:hover {
+  text-decoration: underline;
+}
+
 /* Main content */
 .main {
   padding: 32px 0;
