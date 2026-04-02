@@ -9,6 +9,7 @@ const ReplacePage = lazy(() => import('./pages/ReplacePage').then((m) => ({ defa
 const AirconPage = lazy(() => import('./pages/AirconPage').then((m) => ({ default: m.AirconPage })));
 const PlanPage = lazy(() => import('./pages/PlanPage').then((m) => ({ default: m.PlanPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage })));
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="aircon" element={<AirconPage />} />
             <Route path="plan" element={<PlanPage />} />
             <Route path="about" element={<AboutPage />} />
+            <Route path="privacy" element={<PrivacyPage />} />
           </Route>
         </Routes>
       </Suspense>

@@ -48,7 +48,8 @@ export function Layout() {
         <div className="container">
           <p>
             電気代カリキュレーター —{' '}
-            <Link to="/about">概要・免責事項</Link>
+            <Link to="/about">概要・免責事項</Link>{' / '}
+            <Link to="/privacy">プライバシーポリシー</Link>
           </p>
           <p style={{ marginTop: 4, fontSize: '0.8rem' }}>
             ※ 計算結果は概算です。実際の電気代は契約内容や使用環境により異なります。

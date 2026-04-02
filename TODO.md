@@ -2,39 +2,28 @@
 
 ## 本番公開済み: https://denkidai-sim.pages.dev/
 
-### Phase 1 — 完了
-- [x] Vite + React + TypeScript プロジェクト初期化
-- [x] React Router セットアップ
-- [x] 共通レイアウト（ヘッダー・フッター）
-- [x] appliances.json 作成（50種類）
-- [x] electricityRates.json 作成（10電力会社）
-- [x] 計算ユーティリティ関数
-- [x] `/calc` 家電別電気代計算ページ
-- [x] `/` トップページ
-
-### Phase 2 — 完了
-- [x] `/total` 家計まるごと計算（円グラフ付き）
-- [x] `/replace` 買い替え節約シミュレーター
-- [x] `/aircon` エアコン比較
-- [x] `/plan` 電力プラン比較
-
-### Phase 3 — 完了
-- [x] `/about` 概要・免責
-- [x] AdSense配置（全ページ下部にAdUnitコンポーネント）
-- [x] アフィリエイト導線（calc, replace, aircon に AffiliateSection）
-- [x] SEO対策（Head, OGP, sitemap.xml, robots.txt, canonical）
+### 実装済み
+- [x] 全5ツール（家電別計算・まるごと計算・買い替え・エアコン比較・プラン比較）
+- [x] 共通レイアウト・レスポンシブ対応・モバイルカード表示
+- [x] 家電プリセット50種類 + 10電力会社の料金データ
+- [x] SEO（Head, OGP, canonical, sitemap, robots, JSON-LD, パンくず）
+- [x] GA4（G-QVPMWQF752）+ SPA遷移トラッキング
+- [x] AdSense（ca-pub-6514048542181621）
+- [x] Amazon（qp2026-22）/ 楽天アフィリエイト
+- [x] A8.net エルピオでんき広告（/plan ページ）
+- [x] セキュリティヘッダー（CSP, HSTS, X-Frame-Options等）
+- [x] 入力値のlocalStorage永続化
 - [x] コード分割（lazy loading）
-- [x] Cloudflare Pages SPA対応（_redirects, _headers）
-- [x] GA4/AdSense/アフィリエイトIDを環境変数化（.env.example）
-- [x] 入力バリデーション追加
-- [x] コードレビュー指摘事項の修正（HIGH 5件 + MEDIUM 2件）
-- [x] GitHub リポジトリ作成 + push (motte12345/denkidai-sim)
-- [x] Cloudflare Pages デプロイ (denkidai-sim.pages.dev)
+- [x] Cloudflare Pages デプロイ + GitHub push
 
-### 残作業（手動対応）
+### 残タスク（手動対応）
 - [ ] Cloudflareダッシュボードで GitHub連携を設定（自動デプロイ化）
-- [ ] `.env` に本番の GA4 ID を設定
-- [ ] `.env` に本番の AdSense クライアントID を設定
-- [ ] `.env` に Amazon/楽天アフィリエイトID を設定
-- [ ] Cloudflare Pages の環境変数に VITE_* を設定
 - [ ] Search Console にサイト登録 + sitemap送信
+- [ ] AdSense サイト確認の再申請
+
+### 将来的な改善候補
+- [ ] 電力料金データの最新値への更新（中部電力等）
+- [ ] OGP画像の作成・設定
+- [ ] プライバシーポリシーページ（AdSense要件）
+- [ ] プリレンダリング（SSG）導入でクローラビリティ向上
+- [ ] A8.net の他案件追加（太陽光・蓄電池・ガス比較等）
