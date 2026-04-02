@@ -130,6 +130,52 @@ export function PlanPage() {
         </div>
       </div>
 
+      <div
+        className="card"
+        style={{
+          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+          color: '#fff',
+          border: 'none',
+        }}
+      >
+        <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginBottom: 8 }}>
+          広告
+        </div>
+        <h3 className="card__title" style={{ color: '#fff', marginBottom: 8 }}>
+          もっと安くするなら — 新電力への切り替え
+        </h3>
+        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ flex: 1, minWidth: 200 }}>
+            <p style={{ fontSize: '1.3rem', fontWeight: 700, color: '#f59e0b', marginBottom: 8 }}>
+              エルピオでんき — 基本料金0円
+            </p>
+            <ul style={{ fontSize: '0.9rem', lineHeight: 2, paddingLeft: 18, color: '#d1d5db' }}>
+              <li>都市ガスとのセット割でさらにお得</li>
+              <li>切替手数料・解約手数料 0円</li>
+              <li>対象: 中部電力・関西電力エリア</li>
+            </ul>
+            <a
+              href="https://order.lpio.jp/ot/ag.php?id=ddakeybi8yf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+              style={{
+                marginTop: 12,
+                background: '#f59e0b',
+                color: '#1a1a2e',
+                fontWeight: 700,
+                padding: '12px 24px',
+                borderRadius: '999px',
+                textDecoration: 'none',
+                display: 'inline-block',
+              }}
+            >
+              エルピオでんきの詳細を見る
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="card">
         <h3 className="card__title">段階料金の仕組み</h3>
         <p style={{ fontSize: '0.9rem', lineHeight: 1.8, color: 'var(--color-text-secondary)' }}>
