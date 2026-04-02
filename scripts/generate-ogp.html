@@ -49,17 +49,21 @@ ctx.fillText('家電ごとの電気代を簡単計算', 320, 400);
 // Feature pills
 const pills = ['50種類+プリセット', '買い替えシミュレーション', '電力会社比較'];
 ctx.font = '22px "Hiragino Sans", "Noto Sans JP", sans-serif';
+ctx.textBaseline = 'middle';
+const pillY = 460;
+const pillH = 38;
 let pillX = 320;
 pills.forEach(text => {
-  const w = ctx.measureText(text).width + 28;
+  const w = ctx.measureText(text).width + 32;
   ctx.fillStyle = 'rgba(255,255,255,0.15)';
   ctx.beginPath();
-  ctx.roundRect(pillX, 450, w, 40, 20);
+  ctx.roundRect(pillX, pillY, w, pillH, pillH / 2);
   ctx.fill();
   ctx.fillStyle = 'rgba(255,255,255,0.9)';
-  ctx.fillText(text, pillX + 14, 477);
+  ctx.fillText(text, pillX + 16, pillY + pillH / 2);
   pillX += w + 12;
 });
+ctx.textBaseline = 'alphabetic';
 
 // Bottom bar
 ctx.fillStyle = 'rgba(0,0,0,0.2)';
