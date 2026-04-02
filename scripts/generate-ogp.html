@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head><title>OGP Generator</title></head>
+<body>
+<canvas id="c" width="1200" height="630"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+// Background gradient
+const grad = ctx.createLinearGradient(0, 0, 1200, 630);
+grad.addColorStop(0, '#1d4ed8');
+grad.addColorStop(1, '#2563eb');
+ctx.fillStyle = grad;
+ctx.fillRect(0, 0, 1200, 630);
+
+// Subtle pattern (circles)
+ctx.globalAlpha = 0.06;
+for (let i = 0; i < 12; i++) {
+  const x = 100 + i * 100;
+  for (let j = 0; j < 7; j++) {
+    const y = 80 + j * 90;
+    ctx.beginPath();
+    ctx.arc(x, y, 30, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+  }
+}
+ctx.globalAlpha = 1;
+
+// Icon area (left side)
+ctx.font = '120px serif';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('🔌', 180, 315);
+
+// Main title
+ctx.font = 'bold 72px "Hiragino Sans", "Noto Sans JP", sans-serif';
+ctx.textAlign = 'left';
+ctx.fillStyle = '#ffffff';
+ctx.fillText('電気代', 320, 230);
+ctx.fillText('カリキュレーター', 320, 320);
+
+// Subtitle
+ctx.font = '32px "Hiragino Sans", "Noto Sans JP", sans-serif';
+ctx.fillStyle = 'rgba(255,255,255,0.85)';
+ctx.fillText('家電ごとの電気代を簡単計算', 320, 400);
+
+// Feature pills
+const pills = ['50種類+プリセット', '買い替えシミュレーション', '電力会社比較'];
+ctx.font = '22px "Hiragino Sans", "Noto Sans JP", sans-serif';
+let pillX = 320;
+pills.forEach(text => {
+  const w = ctx.measureText(text).width + 28;
+  ctx.fillStyle = 'rgba(255,255,255,0.15)';
+  ctx.beginPath();
+  ctx.roundRect(pillX, 450, w, 40, 20);
+  ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.fillText(text, pillX + 14, 477);
+  pillX += w + 12;
+});
+
+// Bottom bar
+ctx.fillStyle = 'rgba(0,0,0,0.2)';
+ctx.fillRect(0, 570, 1200, 60);
+ctx.font = '20px "Hiragino Sans", "Noto Sans JP", sans-serif';
+ctx.fillStyle = 'rgba(255,255,255,0.7)';
+ctx.textAlign = 'center';
+ctx.fillText('denkidai-sim.pages.dev — 無料で使える電気代計算ツール', 600, 598);
+
+// Download
+setTimeout(() => {
+  const a = document.createElement('a');
+  a.download = 'ogp.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}, 500);
+</script>
+</body>
+</html>
