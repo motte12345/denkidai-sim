@@ -155,9 +155,9 @@ export function PlanPage() {
               <li>対象: 中部電力・関西電力エリア</li>
             </ul>
             <a
-              href="https://order.lpio.jp/ot/ag.php?id=ddakeybi8yf"
+              href="https://px.a8.net/svt/ejp?a8mat=4B1BLH+FFHHQA+4AXS+5Z6WY"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="btn"
               style={{
                 marginTop: 12,
@@ -172,6 +172,13 @@ export function PlanPage() {
             >
               エルピオでんきの詳細を見る
             </a>
+            <img
+              src="https://www13.a8.net/0.gif?a8mat=4B1BLH+FFHHQA+4AXS+5Z6WY"
+              width={1}
+              height={1}
+              alt=""
+              style={{ border: 0 }}
+            />
           </div>
         </div>
       </div>
