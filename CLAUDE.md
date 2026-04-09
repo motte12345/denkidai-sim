@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 電気代カリキュレーター — 家電ごとの電気代を可視化し、節約・買い替え判断を支援する静的Webツール。
 収益: AdSense + Amazon/楽天アフィリエイト + A8.net（エルピオでんき等）。
 
-本番URL: https://denkidai-sim.pages.dev/
+本番URL: https://denkidai.simtool.dev/
 
 ## Tech Stack
 

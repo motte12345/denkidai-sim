@@ -1,6 +1,6 @@
 # TODO.md — 電気代カリキュレーター
 
-## 本番公開済み: https://denkidai-sim.pages.dev/
+## 本番公開済み: https://denkidai.simtool.dev/
 
 ### 実装済み
 - [x] 全5ツール（家電別計算・まるごと計算・買い替え・エアコン比較・プラン比較）

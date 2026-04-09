@@ -5,7 +5,7 @@ interface Props {
   items: { name: string; path?: string }[];
 }
 
-const BASE_URL = 'https://denkidai-sim.pages.dev';
+const BASE_URL = 'https://denkidai.simtool.dev';
 
 export function Breadcrumb({ items }: Props) {
   const allItems = [{ name: 'トップ', path: '/' }, ...items];

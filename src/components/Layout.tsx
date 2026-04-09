@@ -48,7 +48,7 @@ export function Layout() {
         <div className="container">
           <p className="site-footer__related">
             関連ツール:{' '}
-            <a href="https://hikkoshi-sim.pages.dev/" target="_blank" rel="noopener noreferrer">
+            <a href="https://hikkoshi.simtool.dev/" target="_blank" rel="noopener noreferrer">
               引越し費用シミュレーター
             </a>
           </p>

@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://denkidai-sim.pages.dev/</loc>
+    <loc>https://denkidai.simtool.dev/</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/calc</loc>
+    <loc>https://denkidai.simtool.dev/calc</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/total</loc>
+    <loc>https://denkidai.simtool.dev/total</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/replace</loc>
+    <loc>https://denkidai.simtool.dev/replace</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/aircon</loc>
+    <loc>https://denkidai.simtool.dev/aircon</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/plan</loc>
+    <loc>https://denkidai.simtool.dev/plan</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/about</loc>
+    <loc>https://denkidai.simtool.dev/about</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://denkidai-sim.pages.dev/privacy</loc>
+    <loc>https://denkidai.simtool.dev/privacy</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>

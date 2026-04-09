@@ -11,7 +11,7 @@
 - **教訓**: クローラーはJSを実行しないため、サードパーティscriptの読み込みはindex.htmlに書く
 
 ## 2026-04-01: canonical/OGP/sitemapのURLは実際のドメインと一致させること
-- **原因**: 開発時に仮ドメイン `denkidai-calc.pages.dev` をハードコードしたまま、実際は `denkidai-sim.pages.dev` でデプロイした
+- **原因**: 開発時に仮ドメイン `denkidai-calc.pages.dev` をハードコードしたまま、実際は `denkidai.simtool.dev` でデプロイした
 - **解決策**: Head.tsx, index.html, sitemap.xml, robots.txt の全URLを修正
 - **教訓**: ドメインが決まったら即座に全ファイルをgrepして置換する
 

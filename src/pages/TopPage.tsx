@@ -40,7 +40,7 @@ const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: '電気代カリキュレーター',
-  url: 'https://denkidai-sim.pages.dev/',
+  url: 'https://denkidai.simtool.dev/',
   description: '家電の消費電力から電気代を簡単計算。節約や買い替えの判断を支援する無料ツール。',
 };
 
@@ -48,7 +48,7 @@ const webAppJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: '電気代カリキュレーター',
-  url: 'https://denkidai-sim.pages.dev/',
+  url: 'https://denkidai.simtool.dev/',
   applicationCategory: 'UtilityApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
